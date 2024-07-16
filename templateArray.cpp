@@ -1,8 +1,8 @@
 #include <iostream>
-template <typename T, size_t N>
-T findLargest(T (&arr)[N]) {
+template <class T>
+T findLargest(T arr[5]) {
     T largest = arr[0];
-    for (size_t i = 1; i < N; ++i) {
+    for (int i = 1; i < 5; ++i) {
         if (arr[i] > largest) {
             largest = arr[i];
         }
@@ -11,11 +11,11 @@ T findLargest(T (&arr)[N]) {
 }
 
 int main() {
-    int intArr[] = {10, 20, 30, 40, 50};
-    std::cout<<findLargest(intArr) << std::endl;
+    int intArr[5] = {10, 20, 30, 40, 50};
+    std::cout<< findLargest(intArr) << std::endl;
 
-    double doubleArr[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-    std::cout<<findLargest(doubleArr) << std::endl;
+    double doubleArr[5] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    std::cout<< findLargest(doubleArr) << std::endl;
 
     return 0;
 }
