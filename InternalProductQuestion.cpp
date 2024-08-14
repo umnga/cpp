@@ -45,6 +45,7 @@ int main(){
     }
 
     cout<<"\nProduct Reviews: \n";
+    cout<<"Product Name\tReview\tRating\n";
     for(int i=0; i<n; i++){
         products[i].displayProduct();
     }
