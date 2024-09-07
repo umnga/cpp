@@ -4,11 +4,13 @@ using namespace std;
 class Date {
 private:
     int day, month, year;
+
 public:
-    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+    Date(int d = 1, int m = 1, int y = 2000) : day(d), month(m), year(y) {}
 
     int operator-(const Date& birth) const {
         int age = year - birth.year;
+        // Adjust age if the birthdate hasn't occurred yet this year
         if (month < birth.month || (month == birth.month && day < birth.day)) {
             age--;
         }
