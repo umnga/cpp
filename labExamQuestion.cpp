@@ -1,44 +1,37 @@
 #include <iostream>
-#include <ctime>
+using namespace std;
 
 class Date {
 private:
-    int year, month, day;
-
+    int day, month, year;
 public:
-    // Constructor to initialize the date
-    Date(int y, int m, int d) : year(y), month(m), day(d) {}
+    Date(int d, int m, int y) : day(d), month(m), year(y) {}
 
-    // Operator overloading to calculate age
-    int operator-(const Date& birthDate) {
-        // Get the current date from the system
-        time_t t = time(0);
-        tm* now = localtime(&t);
-        int currentYear = now->tm_year + 1900;
-        int currentMonth = now->tm_mon + 1;
-        int currentDay = now->tm_mday;
-
-        // Calculate the age
-        int age = currentYear - birthDate.year;
-        if (currentMonth < birthDate.month || 
-           (currentMonth == birthDate.month && currentDay < birthDate.day)) {
+    int operator-(const Date& birth) const {
+        int age = year - birth.year;
+        if (month < birth.month || (month == birth.month && day < birth.day)) {
             age--;
         }
-
         return age;
+    }
+
+    void getInput() {
+        cout << "Enter date (day month year): ";
+        cin >> day >> month >> year;
     }
 };
 
 int main() {
-    // Create a birth date (YYYY, MM, DD)
-    Date birthDate(2000, 5, 10);
+    Date currentDate, birthDate;
 
-    // Create today's date (could also use system date as shown above)
-    Date today(2024, 9, 6);
+    cout << "Enter current date:\n";
+    currentDate.getInput();
 
-    // Calculate the age
-    int age = today - birthDate;
+    cout << "Enter your birthdate:\n";
+    birthDate.getInput();
 
-    std::cout << "The person is " << age << " years old." << std::endl;
+    int age = currentDate - birthDate;
+    cout << "Your age is: " << age << " years\n";
+
     return 0;
 }
