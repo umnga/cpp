@@ -10,7 +10,6 @@ public:
 
     int operator-(const Date& birth) const {
         int age = year - birth.year;
-        // Adjust age if the birthdate hasn't occurred yet this year
         if (month < birth.month || (month == birth.month && day < birth.day)) {
             age--;
         }
